@@ -1,7 +1,7 @@
 const router = require('express').Router()
 
 const pmodel = require('./projectModel')
-
+const rModel = require('./resourceModel')
 router.get("/status", (req, res) => {
         res.json('project router IS ONLINE')
 })
@@ -40,5 +40,17 @@ router.get('/:id/resources', (req, res) => {
         })
 })
 
+router.post("/:id/resources", (req, res) => {
+    const newResource = req.body
+    const {id} = req.params
+        rModel.addResourceToProject(newResource , id)
+        .then( resource => {
+            res.json({data: resource})
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({message: err.message})
+        })
+})
 
 module.exports = router

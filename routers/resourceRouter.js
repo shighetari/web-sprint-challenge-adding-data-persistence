@@ -16,7 +16,7 @@ router.get("/", (req, res) => {
       })
 })
 
-router.post("/", (req, res)=> {
+router.post("/:id/resources", (req, res)=> {
     rModel.addResource(req.body)
     .then(newResource => {
         res.status(200).json(newResource)

@@ -4,6 +4,7 @@ module.exports = {
     getProjects,
     addProject,
     getProjectResources
+   
 }
 
 function getProjects() {
@@ -26,3 +27,4 @@ function getProjectResources(project_id) {
     .where('projects.id', '=', project_id)
     
   }
+
